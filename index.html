@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>产品设计家居合集 — 姚昌宏</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F6F4F1;
+    --surface: #FFFFFF;
+    --text: #1C1C1C;
+    --text-secondary: #8E8B86;
+    --text-tertiary: #B8B5B0;
+    --border: #E8E5E0;
+    --accent: #C4A265;
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 32px;
+    --spacing-lg: 64px;
+    --spacing-xl: 120px;
+    --spacing-2xl: 200px;
+    --max-width: 1400px;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── Typography ── */
+  .serif {
+    font-family: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+  }
+
+  h1 { font-size: clamp(48px, 7vw, 96px); font-weight: 300; line-height: 1.15; }
+  h2 { font-size: clamp(32px, 5vw, 56px); font-weight: 300; line-height: 1.2; }
+  h3 { font-size: clamp(18px, 2.5vw, 24px); font-weight: 400; line-height: 1.4; }
+
+  /* ── Layout ── */
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+  }
+
+  section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: var(--spacing-xl) var(--spacing-md);
+    position: relative;
+  }
+
+  .hero__overline {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .hero__title {
+    max-width: 900px;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .hero__subtitle {
+    font-size: clamp(15px, 2vw, 18px);
+    color: var(--text-secondary);
+    font-weight: 300;
+    max-width: 500px;
+    line-height: 1.8;
+  }
+
+  .hero__scroll {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .hero__scroll span {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--text-tertiary);
+  }
+
+  .hero__scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--text-tertiary), transparent);
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ── Product Section ── */
+  .product-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .product-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .product-number {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-tertiary);
+    letter-spacing: 0.2em;
+  }
+
+  .product-title {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 300;
+    line-height: 1.2;
+  }
+
+  .product-desc {
+    font-size: clamp(15px, 1.8vw, 18px);
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-top: var(--spacing-sm);
+    max-width: 520px;
+  }
+
+  .product-meta {
+    display: flex;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+  }
+
+  .product-meta-item {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.1em;
+  }
+
+  .product-meta-item span {
+    display: block;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 2px;
+    letter-spacing: 0;
+  }
+
+  /* ── Gallery ── */
+  .gallery {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--spacing-sm);
+  }
+
+  .gallery--alt {
+    grid-template-columns: 1fr 1.5fr;
+  }
+
+  .gallery__main {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 2px;
+    background: var(--surface);
+    box-shadow:
+      0 1px 2px rgba(0,0,0,0.04),
+      0 4px 16px rgba(0,0,0,0.03);
+    transition: box-shadow 0.5s ease;
+  }
+
+  .gallery__main:hover {
+    box-shadow:
+      0 1px 2px rgba(0,0,0,0.06),
+      0 8px 32px rgba(0,0,0,0.06);
+  }
+
+  .gallery__main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .gallery__main:hover img {
+    transform: scale(1.03);
+  }
+
+  .gallery__side {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .gallery__side-item {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 2px;
+    background: var(--surface);
+    box-shadow:
+      0 1px 2px rgba(0,0,0,0.04),
+      0 4px 16px rgba(0,0,0,0.03);
+    transition: box-shadow 0.5s ease;
+  }
+
+  .gallery__side-item:hover {
+    box-shadow:
+      0 1px 2px rgba(0,0,0,0.06),
+      0 8px 32px rgba(0,0,0,0.06);
+  }
+
+  .gallery__side-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .gallery__side-item:hover img {
+    transform: scale(1.04);
+  }
+
+  .gallery__label {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: white;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 4px 10px;
+    border-radius: 1px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .gallery__main:hover .gallery__label,
+  .gallery__side-item:hover .gallery__label {
+    opacity: 1;
+  }
+
+  /* ── Design Board (4th image) ── */
+  .design-board {
+    margin-top: var(--spacing-sm);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 2px;
+    background: var(--surface);
+    box-shadow:
+      0 1px 2px rgba(0,0,0,0.04),
+      0 4px 16px rgba(0,0,0,0.03);
+    transition: box-shadow 0.5s ease;
+    max-height: 500px;
+  }
+
+  .design-board:hover {
+    box-shadow:
+      0 1px 2px rgba(0,0,0,0.06),
+      0 8px 32px rgba(0,0,0,0.06);
+  }
+
+  .design-board img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    background: var(--surface);
+    transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .design-board:hover img {
+    transform: scale(1.02);
+  }
+
+  /* ── Lightbox ── */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(20,20,20,0.94);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+
+  .lightbox.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .lightbox img {
+    max-width: 92vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 2px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    transform: scale(0.95);
+    transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .lightbox.active img {
+    transform: scale(1);
+  }
+
+  .lightbox__close {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    font-size: 32px;
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-weight: 300;
+    line-height: 1;
+    padding: 8px;
+    transition: color 0.3s ease;
+  }
+
+  .lightbox__close:hover {
+    color: white;
+  }
+
+  .lightbox__counter {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ── Footer ── */
+  .footer {
+    padding: var(--spacing-2xl) var(--spacing-md);
+    text-align: center;
+    border-top: 1px solid var(--border);
+    margin-top: var(--spacing-xl);
+  }
+
+  .footer__text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(20px, 3vw, 28px);
+    color: var(--text);
+    font-weight: 300;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .footer__sub {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.1em;
+  }
+
+  .footer__tools {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+  }
+
+  .footer__tool {
+    font-size: 12px;
+    color: var(--text-secondary);
+    letter-spacing: 0.15em;
+    padding: 8px 20px;
+    border: 1px solid var(--border);
+    border-radius: 1px;
+    transition: all 0.3s ease;
+  }
+
+  .footer__tool:hover {
+    border-color: var(--text);
+    color: var(--text);
+  }
+
+  /* ── Divider ── */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 0;
+  }
+
+  .divider--short {
+    width: 60px;
+    margin: var(--spacing-lg) 0;
+  }
+
+  /* ── Reveal Animation ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s cubic-bezier(0.25, 0.1, 0.25, 1),
+                transform 0.9s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal--delay-1 { transition-delay: 0.1s; }
+  .reveal--delay-2 { transition-delay: 0.2s; }
+  .reveal--delay-3 { transition-delay: 0.3s; }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .product-header {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-sm);
+    }
+
+    .gallery,
+    .gallery--alt {
+      grid-template-columns: 1fr;
+    }
+
+    .gallery__side {
+      flex-direction: row;
+    }
+
+    .gallery__side-item {
+      min-height: 200px;
+    }
+
+    section {
+      padding: var(--spacing-xl) 0;
+    }
+
+    :root {
+      --spacing-2xl: 120px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .gallery__side {
+      flex-direction: column;
+    }
+
+    .gallery__side-item {
+      min-height: 180px;
+    }
+
+    .container {
+      padding: 0 var(--spacing-sm);
+    }
+
+    :root {
+      --spacing-xl: 60px;
+      --spacing-2xl: 80px;
+    }
+  }
+
+  /* ── Smooth scroll ── */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* ── Selection ── */
+  ::selection {
+    background: rgba(0,0,0,0.08);
+    color: var(--text);
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <p class="hero__overline reveal">产品设计作业 · 姚昌宏</p>
+  <h1 class="hero__title serif reveal reveal--delay-1">AI 智能家居产品合集</h1>
+  <p class="hero__subtitle reveal reveal--delay-2">五款由人工智能构思与渲染的概念产品设计，探索未来日常生活的更多可能</p>
+  <div class="hero__scroll reveal reveal--delay-3">
+    <div class="hero__scroll-line"></div>
+    <span>浏览</span>
+  </div>
+</section>
+
+<!-- Product 01: Smart Mirror Cabinet -->
+<section class="product-section" id="product-01">
+  <div class="container">
+    <div class="product-header">
+      <div>
+        <p class="product-number reveal">01 / 05</p>
+      </div>
+      <div>
+        <h2 class="product-title serif reveal reveal--delay-1">智能浴室镜柜</h2>
+        <p class="product-desc reveal reveal--delay-1">镜面显示天气与日程，柜内紫外线消毒收纳，清晨照镜已是全天管家</p>
+        <div class="product-meta reveal reveal--delay-2">
+          <div class="product-meta-item">生成引擎<span>Claude Code + GPT</span></div>
+          <div class="product-meta-item">类别<span>智能卫浴</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery">
+      <div class="gallery__main reveal reveal--delay-1" onclick="openLightbox(this.querySelector('img'))">
+        <img src="01-智能浴室镜柜/02-产品主渲染图.png" alt="智能浴室镜柜 - 产品主渲染图" loading="lazy">
+        <span class="gallery__label">产品主渲染图</span>
+      </div>
+      <div class="gallery__side">
+        <div class="gallery__side-item reveal reveal--delay-2" onclick="openLightbox(this.querySelector('img'))">
+          <img src="01-智能浴室镜柜/03-产品使用场景图.png" alt="智能浴室镜柜 - 使用场景" loading="lazy">
+          <span class="gallery__label">使用场景</span>
+        </div>
+        <div class="gallery__side-item reveal reveal--delay-3" onclick="openLightbox(this.querySelector('img'))">
+          <img src="01-智能浴室镜柜/04-产品三视图.png" alt="智能浴室镜柜 - 三视图" loading="lazy">
+          <span class="gallery__label">三视图</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- Product 02: Smart Bathtub -->
+<section class="product-section" id="product-02">
+  <div class="container">
+    <div class="product-header">
+      <div>
+        <p class="product-number reveal">02 / 05</p>
+      </div>
+      <div>
+        <h2 class="product-title serif reveal reveal--delay-1">智能浴缸洗烘套装</h2>
+        <p class="product-desc reveal reveal--delay-1">恒温按摩浴缸联动即烘系统，出浴即有温热浴袍，沐浴体验闭环</p>
+        <div class="product-meta reveal reveal--delay-2">
+          <div class="product-meta-item">生成引擎<span>Claude Code + GPT</span></div>
+          <div class="product-meta-item">类别<span>智能卫浴</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery gallery--alt">
+      <div class="gallery__side">
+        <div class="gallery__side-item reveal reveal--delay-1" onclick="openLightbox(this.querySelector('img'))">
+          <img src="02-智能浴缸洗烘套装/03-产品使用场景图.jpg" alt="智能浴缸洗烘套装 - 使用场景" loading="lazy">
+          <span class="gallery__label">使用场景</span>
+        </div>
+        <div class="gallery__side-item reveal reveal--delay-2" onclick="openLightbox(this.querySelector('img'))">
+          <img src="02-智能浴缸洗烘套装/04-产品三视图.jpg" alt="智能浴缸洗烘套装 - 三视图" loading="lazy">
+          <span class="gallery__label">三视图</span>
+        </div>
+      </div>
+      <div class="gallery__main reveal reveal--delay-1" onclick="openLightbox(this.querySelector('img'))">
+        <img src="02-智能浴缸洗烘套装/02-产品主渲染图.jpg" alt="智能浴缸洗烘套装 - 产品主渲染图" loading="lazy">
+        <span class="gallery__label">产品主渲染图</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- Product 03: Smart Bed -->
+<section class="product-section" id="product-03">
+  <div class="container">
+    <div class="product-header">
+      <div>
+        <p class="product-number reveal">03 / 05</p>
+      </div>
+      <div>
+        <h2 class="product-title serif reveal reveal--delay-1">卧室智能床</h2>
+        <p class="product-desc reveal reveal--delay-1">监测睡眠姿态自动调节硬度与角度，在最浅睡眠时刻温柔唤醒</p>
+        <div class="product-meta reveal reveal--delay-2">
+          <div class="product-meta-item">生成引擎<span>Claude Code + GPT</span></div>
+          <div class="product-meta-item">类别<span>智能卧室</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery">
+      <div class="gallery__main reveal reveal--delay-1" onclick="openLightbox(this.querySelector('img'))">
+        <img src="卧室智能床/02-产品主渲染图.png" alt="卧室智能床 - 产品主渲染图" loading="lazy">
+        <span class="gallery__label">产品主渲染图</span>
+      </div>
+      <div class="gallery__side">
+        <div class="gallery__side-item reveal reveal--delay-2" onclick="openLightbox(this.querySelector('img'))">
+          <img src="卧室智能床/03-产品使用场景图.png" alt="卧室智能床 - 使用场景" loading="lazy">
+          <span class="gallery__label">使用场景</span>
+        </div>
+        <div class="gallery__side-item reveal reveal--delay-3" onclick="openLightbox(this.querySelector('img'))">
+          <img src="卧室智能床/04-产品三视图.png" alt="卧室智能床 - 三视图" loading="lazy">
+          <span class="gallery__label">三视图</span>
+        </div>
+      </div>
+    </div>
+    <div class="design-board reveal reveal--delay-3" onclick="openLightbox(this.querySelector('img'))">
+      <img src="卧室智能床/06-产品设计展板.png" alt="卧室智能床 - 设计展板" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- Product 04: Bed Cleaning Robot -->
+<section class="product-section" id="product-04">
+  <div class="container">
+    <div class="product-header">
+      <div>
+        <p class="product-number reveal">04 / 05</p>
+      </div>
+      <div>
+        <h2 class="product-title serif reveal reveal--delay-1">床上智能清洁机器人</h2>
+        <p class="product-desc reveal reveal--delay-1">除螨、吸尘、紫外线三合一床面巡航，让每夜都如新换的床单</p>
+        <div class="product-meta reveal reveal--delay-2">
+          <div class="product-meta-item">生成引擎<span>Claude Code + GPT</span></div>
+          <div class="product-meta-item">类别<span>智能清洁</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery gallery--alt">
+      <div class="gallery__side">
+        <div class="gallery__side-item reveal reveal--delay-1" onclick="openLightbox(this.querySelector('img'))">
+          <img src="床上智能清洁机器人/03-产品使用场景图.png" alt="床上智能清洁机器人 - 使用场景" loading="lazy">
+          <span class="gallery__label">使用场景</span>
+        </div>
+        <div class="gallery__side-item reveal reveal--delay-2" onclick="openLightbox(this.querySelector('img'))">
+          <img src="床上智能清洁机器人/04-产品三视图.png" alt="床上智能清洁机器人 - 三视图" loading="lazy">
+          <span class="gallery__label">三视图</span>
+        </div>
+      </div>
+      <div class="gallery__main reveal reveal--delay-1" onclick="openLightbox(this.querySelector('img'))">
+        <img src="床上智能清洁机器人/02-产品主渲染图.png" alt="床上智能清洁机器人 - 产品主渲染图" loading="lazy">
+        <span class="gallery__label">产品主渲染图</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- Product 05: Smart Nightstand -->
+<section class="product-section" id="product-05">
+  <div class="container">
+    <div class="product-header">
+      <div>
+        <p class="product-number reveal">05 / 05</p>
+      </div>
+      <div>
+        <h2 class="product-title serif reveal reveal--delay-1">智能床头柜</h2>
+        <p class="product-desc reveal reveal--delay-1">无线充电、香薰、环境光、白噪音四合一，一场入睡仪式一键开启</p>
+        <div class="product-meta reveal reveal--delay-2">
+          <div class="product-meta-item">生成引擎<span>Claude Code + GPT</span></div>
+          <div class="product-meta-item">类别<span>智能卧室</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery">
+      <div class="gallery__main reveal reveal--delay-1" onclick="openLightbox(this.querySelector('img'))">
+        <img src="智能床头柜/02-产品主渲染图.png" alt="智能床头柜 - 产品主渲染图" loading="lazy">
+        <span class="gallery__label">产品主渲染图</span>
+      </div>
+      <div class="gallery__side">
+        <div class="gallery__side-item reveal reveal--delay-2" onclick="openLightbox(this.querySelector('img'))">
+          <img src="智能床头柜/03-产品使用场景图.png" alt="智能床头柜 - 使用场景" loading="lazy">
+          <span class="gallery__label">使用场景</span>
+        </div>
+        <div class="gallery__side-item reveal reveal--delay-3" onclick="openLightbox(this.querySelector('img'))">
+          <img src="智能床头柜/04-产品三视图.png" alt="智能床头柜 - 三视图" loading="lazy">
+          <span class="gallery__label">三视图</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p class="footer__text serif">姚昌宏 · 产品设计作业</p>
+  <p class="footer__sub">AI 智能家居概念设计集 · 2026</p>
+  <div class="footer__tools">
+    <span class="footer__tool">Claude Code</span>
+    <span class="footer__tool">GPT-4o</span>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox__close" onclick="closeLightbox()">&times;</button>
+  <img src="" alt="" id="lightbox-img">
+  <span class="lightbox__counter" id="lightbox-counter"></span>
+</div>
+
+<script>
+  // ── Scroll Reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -30px 0px'
+  });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Lightbox ──
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCounter = document.getElementById('lightbox-counter');
+  let currentGallery = [];
+  let currentIndex = 0;
+
+  function openLightbox(img) {
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    const section = img.closest('.product-section');
+    const allImgs = section.querySelectorAll('.gallery__main img, .gallery__side-item img, .design-board img');
+    currentGallery = Array.from(allImgs).map(el => ({ src: el.src, alt: el.alt }));
+    currentIndex = currentGallery.findIndex(item => item.src === img.src);
+    lightboxCounter.textContent = `${currentIndex + 1} / ${currentGallery.length}`;
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight' && currentGallery.length > 1) {
+      currentIndex = (currentIndex + 1) % currentGallery.length;
+      lightboxImg.src = currentGallery[currentIndex].src;
+      lightboxImg.alt = currentGallery[currentIndex].alt;
+      lightboxCounter.textContent = `${currentIndex + 1} / ${currentGallery.length}`;
+    }
+    if (e.key === 'ArrowLeft' && currentGallery.length > 1) {
+      currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+      lightboxImg.src = currentGallery[currentIndex].src;
+      lightboxImg.alt = currentGallery[currentIndex].alt;
+      lightboxCounter.textContent = `${currentIndex + 1} / ${currentGallery.length}`;
+    }
+  });
+</script>
+
+</body>
+</html>

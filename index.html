@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>智能家居产品合集 — 姚昌宏</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -34,7 +32,7 @@
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 300;
     line-height: 1.8;
     -webkit-font-smoothing: antialiased;
@@ -261,6 +259,10 @@
     transform: scale(1.03);
   }
 
+  .gallery__thumbnails--3col {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
   .gallery__label {
     position: absolute;
     bottom: 10px;
@@ -452,6 +454,25 @@
   .reveal--delay-2 { transition-delay: 0.2s; }
   .reveal--delay-3 { transition-delay: 0.3s; }
 
+  /* ── Print ── */
+  @media print {
+    .reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    .hero__scroll {
+      display: none !important;
+    }
+    section {
+      padding: 40px 0 !important;
+      page-break-inside: avoid;
+    }
+    .gallery__label {
+      opacity: 1 !important;
+    }
+  }
+
   /* ── Responsive ── */
   @media (max-width: 1024px) {
     .product-header {
@@ -477,7 +498,8 @@
   }
 
   @media (max-width: 640px) {
-    .gallery__thumbnails {
+    .gallery__thumbnails,
+    .gallery__thumbnails--3col {
       grid-template-columns: 1fr;
     }
 
@@ -510,7 +532,7 @@
   <p class="hero__overline reveal">产品设计作业</p>
   <h1 class="hero__title serif reveal reveal--delay-1">智能家居产品合集</h1>
   <p class="hero__designer reveal reveal--delay-1">设计：姚昌宏</p>
-  <p class="hero__subtitle reveal reveal--delay-2">五款由人工智能构思与渲染的概念产品设计，探索未来日常生活的更多可能</p>
+  <p class="hero__subtitle reveal reveal--delay-2">六款由人工智能构思与渲染的概念产品设计，探索未来日常生活的更多可能</p>
   <div class="hero__scroll reveal reveal--delay-3">
     <div class="hero__scroll-line"></div>
     <span>浏览</span>
@@ -522,7 +544,7 @@
   <div class="container">
     <div class="product-header">
       <div>
-        <p class="product-number reveal">01 / 05</p>
+        <p class="product-number reveal">01 / 06</p>
       </div>
       <div>
         <h2 class="product-title serif reveal reveal--delay-1">智能浴室镜柜</h2>
@@ -559,7 +581,7 @@
   <div class="container">
     <div class="product-header">
       <div>
-        <p class="product-number reveal">02 / 05</p>
+        <p class="product-number reveal">02 / 06</p>
       </div>
       <div>
         <h2 class="product-title serif reveal reveal--delay-1">智能浴缸洗烘套装</h2>
@@ -596,7 +618,7 @@
   <div class="container">
     <div class="product-header">
       <div>
-        <p class="product-number reveal">03 / 05</p>
+        <p class="product-number reveal">03 / 06</p>
       </div>
       <div>
         <h2 class="product-title serif reveal reveal--delay-1">卧室智能床</h2>
@@ -636,7 +658,7 @@
   <div class="container">
     <div class="product-header">
       <div>
-        <p class="product-number reveal">04 / 05</p>
+        <p class="product-number reveal">04 / 06</p>
       </div>
       <div>
         <h2 class="product-title serif reveal reveal--delay-1">床上智能清洁机器人</h2>
@@ -673,7 +695,7 @@
   <div class="container">
     <div class="product-header">
       <div>
-        <p class="product-number reveal">05 / 05</p>
+        <p class="product-number reveal">05 / 06</p>
       </div>
       <div>
         <h2 class="product-title serif reveal reveal--delay-1">智能床头柜</h2>
@@ -697,6 +719,59 @@
         <div class="gallery__thumb-item reveal reveal--delay-3" onclick="openLightbox(this.querySelector('img'))">
           <img src="智能床头柜/04-产品三视图.png" alt="智能床头柜 - 三视图" loading="lazy">
           <span class="gallery__label">三视图</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- Product 06: Kitchen Tool Set -->
+<section class="product-section" id="product-06">
+  <div class="container">
+    <div class="product-header">
+      <div>
+        <p class="product-number reveal">06 / 06</p>
+      </div>
+      <div>
+        <h2 class="product-title serif reveal reveal--delay-1">几何系列 · 厨房手工工具套装</h2>
+        <p class="product-desc reveal reveal--delay-1">一套以现代几何语言统一设计的厨房手工工具系列。涵盖大马士革钢主厨刀、清水混凝土研钵、黄铜旋转香料架、叠装式储物罐、组合砧板架及嵌套沙拉碗。黄铜、混凝土、深色实木与 Damascus 钢四种材质贯穿始终，在粗粝与精致之间找到平衡，为日常厨房操作注入仪式感。</p>
+        <div class="product-meta reveal reveal--delay-2">
+          <div class="product-meta-item">生成引擎<span>Claude Code + GPT</span></div>
+          <div class="product-meta-item">类别<span>厨房工具</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery">
+      <div class="gallery__main reveal reveal--delay-1" onclick="openLightbox(this.querySelector('img'))">
+        <img src="06-厨房手工工具套装/8574d7b2-9aac-4610-a572-a2807be8782f.png" alt="厨房工具套装 - 全系列实景渲染" loading="lazy">
+        <span class="gallery__label">全系列实景渲染</span>
+      </div>
+      <div class="gallery__thumbnails gallery__thumbnails--3col">
+        <div class="gallery__thumb-item reveal reveal--delay-1" onclick="openLightbox(this.querySelector('img'))">
+          <img src="06-厨房手工工具套装/2dbb1e8d-1a2e-4d79-8759-536d350ba910.png" alt="大马士革钢主厨刀与磁吸刀架" loading="lazy">
+          <span class="gallery__label">主厨刀与刀架</span>
+        </div>
+        <div class="gallery__thumb-item reveal reveal--delay-2" onclick="openLightbox(this.querySelector('img'))">
+          <img src="06-厨房手工工具套装/8aae75aa-a8a6-49ed-b4e7-deac5af0f983.png" alt="叠装式多功能储物罐" loading="lazy">
+          <span class="gallery__label">叠装储物罐</span>
+        </div>
+        <div class="gallery__thumb-item reveal reveal--delay-3" onclick="openLightbox(this.querySelector('img'))">
+          <img src="06-厨房手工工具套装/286792ce-a910-48bd-a01b-1aaecf8d1507.png" alt="旋转式香料调味瓶架" loading="lazy">
+          <span class="gallery__label">旋转香料架</span>
+        </div>
+        <div class="gallery__thumb-item reveal reveal--delay-1" onclick="openLightbox(this.querySelector('img'))">
+          <img src="06-厨房手工工具套装/f0ffe798-9ef8-4edd-8149-4092a9290365.png" alt="组合式砧板与收纳架" loading="lazy">
+          <span class="gallery__label">组合砧板架</span>
+        </div>
+        <div class="gallery__thumb-item reveal reveal--delay-2" onclick="openLightbox(this.querySelector('img'))">
+          <img src="06-厨房手工工具套装/单体1.png" alt="研钵与研杵" loading="lazy">
+          <span class="gallery__label">研钵与研杵</span>
+        </div>
+        <div class="gallery__thumb-item reveal reveal--delay-3" onclick="openLightbox(this.querySelector('img'))">
+          <img src="06-厨房手工工具套装/单体2.png" alt="嵌套沙拉碗与料理勺" loading="lazy">
+          <span class="gallery__label">嵌套沙拉碗</span>
         </div>
       </div>
     </div>

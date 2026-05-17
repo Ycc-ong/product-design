@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>产品设计家居合集 — 姚昌宏</title>
+<title>智能家居产品合集 — 姚昌宏</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
@@ -89,11 +89,20 @@
     margin-bottom: var(--spacing-md);
   }
 
+  .hero__designer {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: clamp(14px, 1.8vw, 18px);
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+    letter-spacing: 0.08em;
+  }
+
   .hero__subtitle {
     font-size: clamp(15px, 2vw, 18px);
     color: var(--text-secondary);
     font-weight: 300;
-    max-width: 500px;
+    max-width: 560px;
     line-height: 1.8;
   }
 
@@ -185,18 +194,13 @@
 
   /* ── Gallery ── */
   .gallery {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: var(--spacing-sm);
-  }
-
-  .gallery--alt {
-    grid-template-columns: 1fr 1.5fr;
   }
 
   .gallery__main {
     position: relative;
-    overflow: hidden;
     cursor: pointer;
     border-radius: 2px;
     background: var(--surface);
@@ -214,26 +218,23 @@
 
   .gallery__main img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     display: block;
     transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
   }
 
   .gallery__main:hover img {
-    transform: scale(1.03);
+    transform: scale(1.02);
   }
 
-  .gallery__side {
-    display: flex;
-    flex-direction: column;
+  .gallery__thumbnails {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: var(--spacing-sm);
   }
 
-  .gallery__side-item {
-    flex: 1;
+  .gallery__thumb-item {
     position: relative;
-    overflow: hidden;
     cursor: pointer;
     border-radius: 2px;
     background: var(--surface);
@@ -243,43 +244,42 @@
     transition: box-shadow 0.5s ease;
   }
 
-  .gallery__side-item:hover {
+  .gallery__thumb-item:hover {
     box-shadow:
       0 1px 2px rgba(0,0,0,0.06),
       0 8px 32px rgba(0,0,0,0.06);
   }
 
-  .gallery__side-item img {
+  .gallery__thumb-item img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     display: block;
     transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
   }
 
-  .gallery__side-item:hover img {
-    transform: scale(1.04);
+  .gallery__thumb-item:hover img {
+    transform: scale(1.03);
   }
 
   .gallery__label {
     position: absolute;
-    bottom: 12px;
-    left: 12px;
+    bottom: 10px;
+    right: 10px;
     font-size: 10px;
-    letter-spacing: 0.15em;
-    color: white;
-    background: rgba(0,0,0,0.45);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 4px 10px;
-    border-radius: 1px;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.9);
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    padding: 3px 9px;
+    border-radius: 2px;
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
   }
 
   .gallery__main:hover .gallery__label,
-  .gallery__side-item:hover .gallery__label {
+  .gallery__thumb-item:hover .gallery__label {
     opacity: 1;
   }
 
@@ -287,7 +287,6 @@
   .design-board {
     margin-top: var(--spacing-sm);
     position: relative;
-    overflow: hidden;
     cursor: pointer;
     border-radius: 2px;
     background: var(--surface);
@@ -295,7 +294,6 @@
       0 1px 2px rgba(0,0,0,0.04),
       0 4px 16px rgba(0,0,0,0.03);
     transition: box-shadow 0.5s ease;
-    max-height: 500px;
   }
 
   .design-board:hover {
@@ -306,15 +304,13 @@
 
   .design-board img {
     width: 100%;
-    height: 100%;
-    object-fit: contain;
+    height: auto;
     display: block;
-    background: var(--surface);
     transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
   }
 
   .design-board:hover img {
-    transform: scale(1.02);
+    transform: scale(1.01);
   }
 
   /* ── Lightbox ── */
@@ -463,17 +459,12 @@
       gap: var(--spacing-sm);
     }
 
-    .gallery,
-    .gallery--alt {
+    .gallery__thumbnails {
       grid-template-columns: 1fr;
     }
 
-    .gallery__side {
-      flex-direction: row;
-    }
-
-    .gallery__side-item {
-      min-height: 200px;
+    .gallery__thumb-item {
+      min-height: auto;
     }
 
     section {
@@ -486,12 +477,8 @@
   }
 
   @media (max-width: 640px) {
-    .gallery__side {
-      flex-direction: column;
-    }
-
-    .gallery__side-item {
-      min-height: 180px;
+    .gallery__thumbnails {
+      grid-template-columns: 1fr;
     }
 
     .container {
@@ -520,8 +507,9 @@
 
 <!-- Hero -->
 <section class="hero">
-  <p class="hero__overline reveal">产品设计作业 · 姚昌宏</p>
-  <h1 class="hero__title serif reveal reveal--delay-1">AI 智能家居产品合集</h1>
+  <p class="hero__overline reveal">产品设计作业</p>
+  <h1 class="hero__title serif reveal reveal--delay-1">智能家居产品合集</h1>
+  <p class="hero__designer reveal reveal--delay-1">设计：姚昌宏</p>
   <p class="hero__subtitle reveal reveal--delay-2">五款由人工智能构思与渲染的概念产品设计，探索未来日常生活的更多可能</p>
   <div class="hero__scroll reveal reveal--delay-3">
     <div class="hero__scroll-line"></div>
@@ -538,7 +526,7 @@
       </div>
       <div>
         <h2 class="product-title serif reveal reveal--delay-1">智能浴室镜柜</h2>
-        <p class="product-desc reveal reveal--delay-1">镜面显示天气与日程，柜内紫外线消毒收纳，清晨照镜已是全天管家</p>
+        <p class="product-desc reveal reveal--delay-1">镜面采用电致变色玻璃，搭载环境光传感器，随日光节律自动调节色温与亮度。镜面可显示天气、日程与体脂数据，柜内分区收纳搭载紫外线消毒模块，牙刷、剃须刀、毛巾各安其所。防雾涂层与内置除湿风扇确保镜面永不起雾，支持语音交互联动全屋智能系统。清晨站到镜前，它已是全天管家。</p>
         <div class="product-meta reveal reveal--delay-2">
           <div class="product-meta-item">生成引擎<span>Claude Code + GPT</span></div>
           <div class="product-meta-item">类别<span>智能卫浴</span></div>
@@ -550,12 +538,12 @@
         <img src="01-智能浴室镜柜/02-产品主渲染图.png" alt="智能浴室镜柜 - 产品主渲染图" loading="lazy">
         <span class="gallery__label">产品主渲染图</span>
       </div>
-      <div class="gallery__side">
-        <div class="gallery__side-item reveal reveal--delay-2" onclick="openLightbox(this.querySelector('img'))">
+      <div class="gallery__thumbnails">
+        <div class="gallery__thumb-item reveal reveal--delay-2" onclick="openLightbox(this.querySelector('img'))">
           <img src="01-智能浴室镜柜/03-产品使用场景图.png" alt="智能浴室镜柜 - 使用场景" loading="lazy">
           <span class="gallery__label">使用场景</span>
         </div>
-        <div class="gallery__side-item reveal reveal--delay-3" onclick="openLightbox(this.querySelector('img'))">
+        <div class="gallery__thumb-item reveal reveal--delay-3" onclick="openLightbox(this.querySelector('img'))">
           <img src="01-智能浴室镜柜/04-产品三视图.png" alt="智能浴室镜柜 - 三视图" loading="lazy">
           <span class="gallery__label">三视图</span>
         </div>
@@ -575,27 +563,27 @@
       </div>
       <div>
         <h2 class="product-title serif reveal reveal--delay-1">智能浴缸洗烘套装</h2>
-        <p class="product-desc reveal reveal--delay-1">恒温按摩浴缸联动即烘系统，出浴即有温热浴袍，沐浴体验闭环</p>
+        <p class="product-desc reveal reveal--delay-1">浴缸内置人体工学躺位与多区按摩喷头，恒温循环系统将水温锁定在设定值，误差不超过 0.3 度。出水口集成水质传感器，实时显示 pH 值与余氯含量。侧柜嵌入式洗烘模块在出浴前 5 分钟自动启动，浴巾与浴袍以 40 度柔风预热。浴缸内壁自洁涂层与紫外线消杀在排水后自动运行，整套系统将泡浴、洗护与烘干收束为一次无缝体验。</p>
         <div class="product-meta reveal reveal--delay-2">
           <div class="product-meta-item">生成引擎<span>Claude Code + GPT</span></div>
           <div class="product-meta-item">类别<span>智能卫浴</span></div>
         </div>
       </div>
     </div>
-    <div class="gallery gallery--alt">
-      <div class="gallery__side">
-        <div class="gallery__side-item reveal reveal--delay-1" onclick="openLightbox(this.querySelector('img'))">
-          <img src="02-智能浴缸洗烘套装/03-产品使用场景图.jpg" alt="智能浴缸洗烘套装 - 使用场景" loading="lazy">
-          <span class="gallery__label">使用场景</span>
-        </div>
-        <div class="gallery__side-item reveal reveal--delay-2" onclick="openLightbox(this.querySelector('img'))">
-          <img src="02-智能浴缸洗烘套装/04-产品三视图.jpg" alt="智能浴缸洗烘套装 - 三视图" loading="lazy">
-          <span class="gallery__label">三视图</span>
-        </div>
-      </div>
+    <div class="gallery">
       <div class="gallery__main reveal reveal--delay-1" onclick="openLightbox(this.querySelector('img'))">
         <img src="02-智能浴缸洗烘套装/02-产品主渲染图.jpg" alt="智能浴缸洗烘套装 - 产品主渲染图" loading="lazy">
         <span class="gallery__label">产品主渲染图</span>
+      </div>
+      <div class="gallery__thumbnails">
+        <div class="gallery__thumb-item reveal reveal--delay-2" onclick="openLightbox(this.querySelector('img'))">
+          <img src="02-智能浴缸洗烘套装/03-产品使用场景图.jpg" alt="智能浴缸洗烘套装 - 使用场景" loading="lazy">
+          <span class="gallery__label">使用场景</span>
+        </div>
+        <div class="gallery__thumb-item reveal reveal--delay-3" onclick="openLightbox(this.querySelector('img'))">
+          <img src="02-智能浴缸洗烘套装/04-产品三视图.jpg" alt="智能浴缸洗烘套装 - 三视图" loading="lazy">
+          <span class="gallery__label">三视图</span>
+        </div>
       </div>
     </div>
   </div>
@@ -612,7 +600,7 @@
       </div>
       <div>
         <h2 class="product-title serif reveal reveal--delay-1">卧室智能床</h2>
-        <p class="product-desc reveal reveal--delay-1">监测睡眠姿态自动调节硬度与角度，在最浅睡眠时刻温柔唤醒</p>
+        <p class="product-desc reveal reveal--delay-1">床垫内置分布式压力传感器阵列，实时捕捉睡姿变化与呼吸频率，气动调节单元在睡眠中无声调整各区域支撑硬度。床头集成非接触式生物雷达，监测心率变异性与睡眠分期。在系统判定的最浅睡眠窗口内，通过渐亮模拟日出灯光与床体微倾完成无感唤醒。所有数据汇入健康报告，可持续追踪睡眠趋势——这是一部真正理解你睡眠的床。</p>
         <div class="product-meta reveal reveal--delay-2">
           <div class="product-meta-item">生成引擎<span>Claude Code + GPT</span></div>
           <div class="product-meta-item">类别<span>智能卧室</span></div>
@@ -624,12 +612,12 @@
         <img src="卧室智能床/02-产品主渲染图.png" alt="卧室智能床 - 产品主渲染图" loading="lazy">
         <span class="gallery__label">产品主渲染图</span>
       </div>
-      <div class="gallery__side">
-        <div class="gallery__side-item reveal reveal--delay-2" onclick="openLightbox(this.querySelector('img'))">
+      <div class="gallery__thumbnails">
+        <div class="gallery__thumb-item reveal reveal--delay-2" onclick="openLightbox(this.querySelector('img'))">
           <img src="卧室智能床/03-产品使用场景图.png" alt="卧室智能床 - 使用场景" loading="lazy">
           <span class="gallery__label">使用场景</span>
         </div>
-        <div class="gallery__side-item reveal reveal--delay-3" onclick="openLightbox(this.querySelector('img'))">
+        <div class="gallery__thumb-item reveal reveal--delay-3" onclick="openLightbox(this.querySelector('img'))">
           <img src="卧室智能床/04-产品三视图.png" alt="卧室智能床 - 三视图" loading="lazy">
           <span class="gallery__label">三视图</span>
         </div>
@@ -652,27 +640,27 @@
       </div>
       <div>
         <h2 class="product-title serif reveal reveal--delay-1">床上智能清洁机器人</h2>
-        <p class="product-desc reveal reveal--delay-1">除螨、吸尘、紫外线三合一床面巡航，让每夜都如新换的床单</p>
+        <p class="product-desc reveal reveal--delay-1">专为布艺床面设计的微型清洁机器人，搭载激光 SLAM 导航与边缘检测，可在被子、床单、枕头上自主规划巡航路径。底部旋转滚刷以高频拍打织物，配合大吸力风机将深层的螨虫、皮屑与粉尘一并吸除。机身底部紫外线灯管在清扫后对路径区域进行二次消杀，一次充电可完整清洁一张 2.0m 大床，清洁完毕自动返回充电座。</p>
         <div class="product-meta reveal reveal--delay-2">
           <div class="product-meta-item">生成引擎<span>Claude Code + GPT</span></div>
           <div class="product-meta-item">类别<span>智能清洁</span></div>
         </div>
       </div>
     </div>
-    <div class="gallery gallery--alt">
-      <div class="gallery__side">
-        <div class="gallery__side-item reveal reveal--delay-1" onclick="openLightbox(this.querySelector('img'))">
-          <img src="床上智能清洁机器人/03-产品使用场景图.png" alt="床上智能清洁机器人 - 使用场景" loading="lazy">
-          <span class="gallery__label">使用场景</span>
-        </div>
-        <div class="gallery__side-item reveal reveal--delay-2" onclick="openLightbox(this.querySelector('img'))">
-          <img src="床上智能清洁机器人/04-产品三视图.png" alt="床上智能清洁机器人 - 三视图" loading="lazy">
-          <span class="gallery__label">三视图</span>
-        </div>
-      </div>
+    <div class="gallery">
       <div class="gallery__main reveal reveal--delay-1" onclick="openLightbox(this.querySelector('img'))">
         <img src="床上智能清洁机器人/02-产品主渲染图.png" alt="床上智能清洁机器人 - 产品主渲染图" loading="lazy">
         <span class="gallery__label">产品主渲染图</span>
+      </div>
+      <div class="gallery__thumbnails">
+        <div class="gallery__thumb-item reveal reveal--delay-2" onclick="openLightbox(this.querySelector('img'))">
+          <img src="床上智能清洁机器人/03-产品使用场景图.png" alt="床上智能清洁机器人 - 使用场景" loading="lazy">
+          <span class="gallery__label">使用场景</span>
+        </div>
+        <div class="gallery__thumb-item reveal reveal--delay-3" onclick="openLightbox(this.querySelector('img'))">
+          <img src="床上智能清洁机器人/04-产品三视图.png" alt="床上智能清洁机器人 - 三视图" loading="lazy">
+          <span class="gallery__label">三视图</span>
+        </div>
       </div>
     </div>
   </div>
@@ -689,7 +677,7 @@
       </div>
       <div>
         <h2 class="product-title serif reveal reveal--delay-1">智能床头柜</h2>
-        <p class="product-desc reveal reveal--delay-1">无线充电、香薰、环境光、白噪音四合一，一场入睡仪式一键开启</p>
+        <p class="product-desc reveal reveal--delay-1">柜体集成了四个独立功能模块：隐藏式无线充电面板置于柜面下方，手机随手一放即充；超声波香薰扩散器藏于柜体左侧，支持定时与浓度调节；底部环形氛围灯带可在 2700K 至 6000K 之间无极调节，配合日落渐暗与日出渐亮模式；内置高品质白噪音扬声器，提供雨声、海浪、森林等 12 种声景。四个模块通过触控环一键联动，每晚入睡前只需轻触一次，整个卧室便进入睡眠模式。</p>
         <div class="product-meta reveal reveal--delay-2">
           <div class="product-meta-item">生成引擎<span>Claude Code + GPT</span></div>
           <div class="product-meta-item">类别<span>智能卧室</span></div>
@@ -701,12 +689,12 @@
         <img src="智能床头柜/02-产品主渲染图.png" alt="智能床头柜 - 产品主渲染图" loading="lazy">
         <span class="gallery__label">产品主渲染图</span>
       </div>
-      <div class="gallery__side">
-        <div class="gallery__side-item reveal reveal--delay-2" onclick="openLightbox(this.querySelector('img'))">
+      <div class="gallery__thumbnails">
+        <div class="gallery__thumb-item reveal reveal--delay-2" onclick="openLightbox(this.querySelector('img'))">
           <img src="智能床头柜/03-产品使用场景图.png" alt="智能床头柜 - 使用场景" loading="lazy">
           <span class="gallery__label">使用场景</span>
         </div>
-        <div class="gallery__side-item reveal reveal--delay-3" onclick="openLightbox(this.querySelector('img'))">
+        <div class="gallery__thumb-item reveal reveal--delay-3" onclick="openLightbox(this.querySelector('img'))">
           <img src="智能床头柜/04-产品三视图.png" alt="智能床头柜 - 三视图" loading="lazy">
           <span class="gallery__label">三视图</span>
         </div>
@@ -763,7 +751,7 @@
     document.body.style.overflow = 'hidden';
 
     const section = img.closest('.product-section');
-    const allImgs = section.querySelectorAll('.gallery__main img, .gallery__side-item img, .design-board img');
+    const allImgs = section.querySelectorAll('.gallery__main img, .gallery__thumb-item img, .design-board img');
     currentGallery = Array.from(allImgs).map(el => ({ src: el.src, alt: el.alt }));
     currentIndex = currentGallery.findIndex(item => item.src === img.src);
     lightboxCounter.textContent = `${currentIndex + 1} / ${currentGallery.length}`;
